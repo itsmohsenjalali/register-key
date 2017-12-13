@@ -91,9 +91,11 @@ def main():
                 chat_id = update["message"]["chat"]["id"]
                 if text == "/start":
                     key = build_keyboard(["1","2"])
-                    send_message("""به ربات ثبت نام خوش امدید
-                                 1) ثبت نام
-                                 2) اطلاعات ثبت نامی""",chat_id,key)
+                    send_message("""
+                    به ربات ثبت نام خوش امدید
+                                 1)ثبت نام
+                                 2)اطلاعات ثبت نامی
+                                 """,chat_id,key)
                 elif text == "1":
                     if register(updates,chat_id) :
                         send_message("😉ثبت نام شما انجام شد",chat_id)
