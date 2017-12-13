@@ -39,7 +39,7 @@ def register_db(chat_id,Name,Id):
     db.add_item([chat_id,Name,Id])
     return
 def build_keyboard(items):
-    keyboard = [[items[0],items[1]]
+    keyboard = [[items[0]],[items[1]]]
     reply_markup = {"keyboard":keyboard, "one_time_keyboard": True}
     return json.dumps(reply_markup)
 def isUpdate(updates):
