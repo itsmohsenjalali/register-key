@@ -90,7 +90,9 @@ def main():
                 text = update["message"]["text"]
                 chat_id = update["message"]["chat"]["id"]
                 if text == "/start":
-                    key = build_keyboard(["ثبت نام","اطلاعات ثب شده"])
+                    key = build_keyboard({"ثبت نام" : "/reg",
+                                          "اطلاعات ثب شده" : "/get"
+                                         })
                     send_message("به ربات ثبت نام خوش امدین",chat_id,key)
                 elif text == "/reg":
                     if register(updates,chat_id) :
