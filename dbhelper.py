@@ -16,21 +16,21 @@ class DBhelper:
         )
     def setup(self):
         cur = self.conn.cursor()
-        cur.execute('''CREATE TABLE register1
+        cur.execute('''CREATE TABLE register2
         (ID INT NOT NULL,
         NAME TEXT NOT NULL,
         SID TEXT NOT NULL);''')
         self.conn.commit()
     def add_item(self,item_list):
         cur = self.conn.cursor()
-        cur.execute("""INSERT INTO register1 (ID,NAME,SID)
+        cur.execute("""INSERT INTO register2 (ID,NAME,SID)
         VALUES (%s,%s,%s)""",(item_list[0],item_list[1],item_list[2]))
         self.conn.commit()
     def delete_item(self,ID):
         cur = self.conn.cursor()
-        cur.execute("""DELETE from register1 where ID={};""".format(ID))
+        cur.execute("""DELETE from register2 where ID={};""".format(ID))
         self.conn.commit()
     def get_item(self):
         cur = self.conn.cursor()
-        cur.execute("""SELECT NAME,SID from register1""")
+        cur.execute("""SELECT NAME,SID from register2""")
         return(cur.fetchall())
