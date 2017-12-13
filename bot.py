@@ -26,7 +26,7 @@ def get_updates(offset=None):
     return js
 def send_message(text, chat_id, reply_markup=None):
     text = urllib.parse.quote_plus(text)
-    URL = url + "sendMessage?text={}&chat_id={}".format(text, chat_id)
+    URL = url + "sendMessage?text={}&chat_id={}&parse_mode=Markdown".format(text, chat_id)
     if reply_markup:
         URL += "&reply_markup={}".format(reply_markup)
     get_url(URL)
