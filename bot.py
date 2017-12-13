@@ -39,7 +39,7 @@ def register_db(chat_id,Name,Id):
     db.add_item([chat_id,Name,Id])
     return
 def build_keyboard(items):
-    keyboard = [items[0],items[1]]
+    keyboard = [[item] for item in items]
     reply_markup = {"keyboard":keyboard, "one_time_keyboard": True}
     return json.dumps(reply_markup)
 def isUpdate(updates):
@@ -90,13 +90,15 @@ def main():
                 text = update["message"]["text"]
                 chat_id = update["message"]["chat"]["id"]
                 if text == "/start":
-                    key = build_keyboard(["ثبت نام","اطلاعات ثب شده"])
-                    send_message("به ربات ثبت نام خوش امدین",chat_id,key)
-                elif text == "/reg":
+                    key = build_keyboard(["1","2"])
+                    send_message("""به ربات ثبت نام خوش امدید
+                                 1) ثبت نام
+                                 2) اطلاعات ثبت نامی""",chat_id,key)
+                elif text == "1":
                     if register(updates,chat_id) :
                         send_message("😉ثبت نام شما انجام شد",chat_id)
                         last_update_id += 1
-                elif text == "/get":
+                elif text == "2":
                     get_report(chat_id)
                 else:
                     send_message("پیام شما قابل مفهوم نیست",chat_id)
